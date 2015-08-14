@@ -1,27 +1,15 @@
-/**
- * @file 入口文件
- */
+var exp = require('express');
 
-var path = require('path');
-var exec = require('child_process').exec;
-var download = require('./src/download').download;
+var app = exp();
 
-// mock url
-var url = 'https://t.alipayobjects.com/images/rmsweb/T1cDVgXbhkXXXXXXXX.jpg';
+app.set('views',  __dirname + '/template');
+app.set('view engine', 'ejs');
 
-var buildDir = path.join(__dirname, '_build');
+app.get('/', function(req, res){
+    res.render('global');
+});
 
-download(url, buildDir).then(
-    function () {
-        exec('cd ' + buildDir, function () {
-            exec('hpm build', function (err) {
-                if (err) {
-                    console.log(err);
-                }
-            });
-        });
-    },
-    function () {
-        console.log('download failed');
-    }
-);
+if (!module.parent) {
+  app.listen(3000);
+  console.log('Express started on port 3000');
+}

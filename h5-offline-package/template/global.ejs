@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>h5离线包配置平台</title>
+	    		<!-- 新 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    	<link href="./bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+	    <style type="text/css">
+		    .bs-example {width: 768px; margin: 0 auto;background-color: #fff;border-color: #ddd;border-width: 1px;border-radius: 4px 4px 0 0;-webkit-box-shadow: none;box-shadow: none; margin-top: 70px;}
+		    .bs-example-form .input-group {margin-bottom: 10px;}
+		    .input-line .input-group-addon {width: 80px;}
+		    .input-line {width: 100%}
+		    .col-md-1 {width: 80px;}
+		    .date .form-control {background-color: #fff}
+		    .form-group {float: left;}
+		</style>
+	</head>
+	<body>
+		<!-- 导航 -->
+		<nav class="navbar navbar-fixed-top navbar-inverse">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">powerbuilder</a>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		        <li><a href="activities.html">activities</a></li>
+		        <li class="active"><a href="#">global<span class="sr-only">(current)</span></a></li>
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+		
+
+		<!-- 表单 -->
+		<form class="bs-example bs-example-form" data-example-id="simple-input-groups">
+			<div class="input-group input-line">
+			  <span class="input-group-addon" id="basic-addon1">name</span>
+			  <input type="text" class="form-control" placeholder="name" aria-describedby="basic-addon1">
+			</div>
+		    <br>
+			<div class="input-group input-line">
+			  <span class="input-group-addon" id="basic-addon2">url</span>
+			  <input type="text" class="form-control" placeholder="url" aria-describedby="basic-addon2">
+			</div>
+		    <br>
+			<div class="input-group input-line">
+			  <span class="input-group-addon" id="basic-addon3">appid</span>
+			  <input type="text" class="form-control" placeholder="appid" aria-describedby="basic-addon3">
+			</div>
+			<br>
+			<!-- 日期 -->
+            <div class="form-group">
+                <label for="dtp_input1" class="col-md-1 control-label">start</label>
+                <div class="input-group date col-md-5" id="form_starttime" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                    <input class="form-control" size="16" type="text" value="" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+				<input type="hidden" id="dtp_input1" value="" /><br/>
+            </div>
+            <div class="form-group">
+                <label for="dtp_input1" class="col-md-1 control-label">end</label>
+                <div class="input-group date col-md-5" id="form_endtime" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                    <input class="form-control" size="16" type="text" value="" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+				<input type="hidden" id="dtp_input1" value="" /><br/>
+            </div>
+			<button type="submit" class="btn btn-default">Submit</button>
+	    </form>
+
+				 
+		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+		<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<!-- 日期选择 -->
+		<script type="text/javascript" src="./bootstrap/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+		<script type="text/javascript">
+		    $('#form_starttime').datetimepicker({
+		        weekStart: 1,
+		        todayBtn:  1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 2,
+				forceParse: 0,
+		        showMeridian: 1
+		    });
+		    $('#form_endtime').datetimepicker({
+		        weekStart: 1,
+		        todayBtn:  1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 2,
+				forceParse: 0,
+		        showMeridian: 1
+		    });
+			
+		</script>
+
+	</body>
+</html>
