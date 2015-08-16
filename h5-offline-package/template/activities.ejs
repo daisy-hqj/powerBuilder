@@ -7,7 +7,7 @@
 	    <title>h5离线包配置平台</title>
 	    		<!-- 新 Bootstrap 核心 CSS 文件 -->
 		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    	<link href="./bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    	<link href="../bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 	    <style type="text/css">
 		    .bs-example {width: 768px; margin: 0 auto;background-color: #fff;border-color: #ddd;border-width: 1px;border-radius: 4px 4px 0 0;-webkit-box-shadow: none;box-shadow: none; margin-top: 70px;}
 		    .bs-example-form .input-group {margin-bottom: 10px;}
@@ -37,29 +37,28 @@
 		  </div><!-- /.container-fluid -->
 		</nav>
 		
-
 		<!-- 表单 -->
-		<form class="bs-example bs-example-form" data-example-id="simple-input-groups">
+		<form class="bs-example bs-example-form" data-example-id="simple-input-groups"action="/submit" method="post">
 			<div class="input-group input-line">
 			  <span class="input-group-addon" id="basic-addon1">name</span>
-			  <input type="text" class="form-control" placeholder="name" aria-describedby="basic-addon1">
+			  <input type="text" class="form-control" name="name" placeholder="name" aria-describedby="basic-addon1">
 			</div>
-			    <br>
+		    <br>
 			<div class="input-group input-line">
 			  <span class="input-group-addon" id="basic-addon2">url</span>
-			  <input type="text" class="form-control" placeholder="url" aria-describedby="basic-addon2">
+			  <input type="text" class="form-control" name="url" placeholder="url" aria-describedby="basic-addon2">
 			</div>
 		    <br>
 			<div class="input-group input-line">
 			  <span class="input-group-addon" id="basic-addon3">appid</span>
-			  <input type="text" class="form-control" placeholder="appid" aria-describedby="basic-addon3">
+			  <input type="text" class="form-control" name="appid" placeholder="appid" aria-describedby="basic-addon3">
 			</div>
 			<br>
 			<!-- 日期 -->
             <div class="form-group">
                 <label for="dtp_input1" class="col-md-1 control-label">start</label>
                 <div class="input-group date col-md-5" id="form_starttime" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
-                    <input class="form-control" size="16" type="text" value="" readonly>
+                    <input class="form-control" name="start" size="16" type="text" value="" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 					<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                 </div>
@@ -68,7 +67,7 @@
             <div class="form-group">
                 <label for="dtp_input1" class="col-md-1 control-label">end</label>
                 <div class="input-group date col-md-5" id="form_endtime" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
-                    <input class="form-control" size="16" type="text" value="" readonly>
+                    <input class="form-control" name="end" size="16" type="text" value="" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 					<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                 </div>
@@ -77,6 +76,7 @@
 			<button type="submit" class="btn btn-default">Submit</button>
 	    </form>
 
+
 				 
 		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 		<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
@@ -84,7 +84,7 @@
 		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 		<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<!-- 日期选择 -->
-		<script type="text/javascript" src="./bootstrap/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="../bootstrap/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
 		<script type="text/javascript">
 		    $('#form_starttime').datetimepicker({
 		        weekStart: 1,
