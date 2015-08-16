@@ -1,0 +1,36 @@
+Script started on Sun Aug 16 19:56:04 2015
+[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package]1;..fline-package[0m[27m[24m[J[01;32m➜ [01;32m [36mh5-offline-package [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[K[?1h=ssc
+[0mSCREEN_NO        scandeps.pl      sched            screen           [1;31mscripts[0m/       
+sc_auth          scandeps5.16.pl  schemagen        screencapture    scselect       
+[Jsc_usage         [Jscandeps5.18.pl  [Jscp              [Jscript           [Jscutil         [J[3A[0m[27m[24m[37Csc[Kri
+[J[A[41Cpts[1m/[0m[0m [?1l>
+[J]2;scripts]1;scripts[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package/scripts]1;..ckage/scripts[0m[27m[24m[J[01;32m➜ [01;32m [36mscripts [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[K[?1h=lls[?1l>
+]2;ls -G]1;lsdb-create.sql
+[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package/scripts]1;..ckage/scripts[0m[27m[24m[J[01;32m➜ [01;32m [36mscripts [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[K[?1h=ppwd[?1l>
+]2;pwd]1;pwd/Users/qiujia/tools/h5-offline-pack/tools/h5-offline-package/scripts
+[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package/scripts]1;..ckage/scripts[0m[27m[24m[J[01;32m➜ [01;32m [36mscripts [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[K[?1h=ccd ..[?1l>
+]2;cd ..]1;cd[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package]1;..fline-package[0m[27m[24m[J[01;32m➜ [01;32m [36mh5-offline-package [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[K[?1h=ddit  d  ggit sata   tatus[?1l>
+]2;git status]1;gitOn branch master
+Your branch is ahead of 'origin/master' by 6 commits.
+  (use "git push" to publish your local commits)
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	[31mscripts/[m
+	[31mtypescript[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package]1;..fline-package[0m[27m[24m[J[01;32m➜ [01;32m [36mh5-offline-package [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[K[?1h=ggit add .[?1l>
+]2;git add .]1;git[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package]1;..fline-package[0m[27m[24m[J[01;32m➜ [01;32m [36mh5-offline-package [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[K[?1h=ggit commit -a -m ''[?1l>
+]2;git commit -a -m '']1;gitAborting commit due to empty commit message.
+[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package]1;..fline-package[0m[27m[24m[J[01;31m➜ [27m[01;32m [36mh5-offline-package [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[K[?1h=git commit -a -m ''[15Dadd .          [10Dstatus[?1l>
+]2;git status]1;gitOn branch master
+Your branch is ahead of 'origin/master' by 6 commits.
+  (use "git push" to publish your local commits)
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	[32mnew file:   scripts/db-create.sql[m
+	[32mnew file:   typescript[m
+
+[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package]1;..fline-package[0m[27m[24m[J[01;32m➜ [01;32m [36mh5-offline-package [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[K[?1h=
