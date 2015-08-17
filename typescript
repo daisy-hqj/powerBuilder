@@ -1,75 +1,0 @@
-Script started on Sun Aug 16 19:56:04 2015
-[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package]1;..fline-package[0m[27m[24m[J[01;32m➜ [01;32m [36mh5-offline-package [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[K[?1h=ssc
-[0mSCREEN_NO        scandeps.pl      sched            screen           [1;31mscripts[0m/       
-sc_auth          scandeps5.16.pl  schemagen        screencapture    scselect       
-[Jsc_usage         [Jscandeps5.18.pl  [Jscp              [Jscript           [Jscutil         [J[3A[0m[27m[24m[37Csc[Kri
-[J[A[41Cpts[1m/[0m[0m [?1l>
-[J]2;scripts]1;scripts[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package/scripts]1;..ckage/scripts[0m[27m[24m[J[01;32m➜ [01;32m [36mscripts [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[K[?1h=lls[?1l>
-]2;ls -G]1;lsdb-create.sql
-[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package/scripts]1;..ckage/scripts[0m[27m[24m[J[01;32m➜ [01;32m [36mscripts [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[K[?1h=ppwd[?1l>
-]2;pwd]1;pwd/Users/qiujia/tools/h5-offline-pack/tools/h5-offline-package/scripts
-[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package/scripts]1;..ckage/scripts[0m[27m[24m[J[01;32m➜ [01;32m [36mscripts [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[K[?1h=ccd ..[?1l>
-]2;cd ..]1;cd[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package]1;..fline-package[0m[27m[24m[J[01;32m➜ [01;32m [36mh5-offline-package [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[K[?1h=ddit  d  ggit sata   tatus[?1l>
-]2;git status]1;gitOn branch master
-Your branch is ahead of 'origin/master' by 6 commits.
-  (use "git push" to publish your local commits)
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-
-	[31mscripts/[m
-	[31mtypescript[m
-
-nothing added to commit but untracked files present (use "git add" to track)
-[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package]1;..fline-package[0m[27m[24m[J[01;32m➜ [01;32m [36mh5-offline-package [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[K[?1h=ggit add .[?1l>
-]2;git add .]1;git[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package]1;..fline-package[0m[27m[24m[J[01;32m➜ [01;32m [36mh5-offline-package [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[K[?1h=ggit commit -a -m ''[?1l>
-]2;git commit -a -m '']1;gitAborting commit due to empty commit message.
-[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package]1;..fline-package[0m[27m[24m[J[01;31m➜ [27m[01;32m [36mh5-offline-package [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[K[?1h=git commit -a -m ''[15Dadd .          [10Dstatus[?1l>
-]2;git status]1;gitOn branch master
-Your branch is ahead of 'origin/master' by 6 commits.
-  (use "git push" to publish your local commits)
-Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
-
-	[32mnew file:   scripts/db-create.sql[m
-	[32mnew file:   typescript[m
-
-[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package]1;..fline-package[0m[27m[24m[J[01;32m➜ [01;32m [36mh5-offline-package [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[K[?1h=git statuscommit -a -m ''1'1'[?1l>
-]2;git commit -a -m '11']1;git[master a35c8e2] 11
- 2 files changed, 57 insertions(+)
- create mode 100644 scripts/db-create.sql
- create mode 100644 typescript
-[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package]1;..fline-package[0m[27m[24m[J[01;32m➜ [01;32m [36mh5-offline-package [01;34mgit:([31mmaster[34m)[00m[01;34m [00m[K[?1h=git commit -a -m '11'[17Dstatus           [11D[?1l>
-]2;git status]1;gitOn branch master
-Your branch is ahead of 'origin/master' by 7 commits.
-  (use "git push" to publish your local commits)
-nothing to commit, working directory clean
-[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package]1;..fline-package[0m[27m[24m[J[01;32m➜ [01;32m [36mh5-offline-package [01;34mgit:([31mmaster[34m)[00m[01;34m [00m[K[?1h=git status      push github [?1l>
-]2;git push github]1;gitwarning: push.default is unset; its implicit value has changed in
-Git 2.0 from 'matching' to 'simple'. To squelch this message
-and maintain the traditional behavior, use:
-
-  git config --global push.default matching
-
-To squelch this message and adopt the new behavior now, use:
-
-  git config --global push.default simple
-
-When push.default is set to 'matching', git will push local branches
-to the remote branches that already exist with the same name.
-
-Since Git 2.0, Git defaults to the more conservative 'simple'
-behavior, which only pushes the current branch to the corresponding
-remote branch that 'git pull' uses to update the current branch.
-
-See 'git help config' and search for 'push.default' for further information.
-(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
-'current' instead of 'simple' if you sometimes use older versions of Git)
-
-Counting objects: 5, done.
-Delta compression using up to 4 threads.
-Compressing objects:  25% (1/4)   Compressing objects:  50% (2/4)   Compressing objects:  75% (3/4)   Compressing objects: 100% (4/4)   Compressing objects: 100% (4/4), done.
-Writing objects:  20% (1/5)   Writing objects:  40% (2/5)   Writing objects:  60% (3/5)   Writing objects:  80% (4/5)   Writing objects: 100% (5/5)   Writing objects: 100% (5/5), 1.53 KiB | 0 bytes/s, done.
-Total 5 (delta 1), reused 0 (delta 0)
-To git@github.com:daisy-hqj/powerBuilder.git
-   733abe2..a35c8e2  master -> master
-[1m[7m%[27m[1m[0m                                                                                       ]2;qiujia@qiujiadeMacBook-Air: ~/tools/h5-offline-pack/tools/h5-offline-package]1;..fline-package[0m[27m[24m[J[01;32m➜ [01;32m [36mh5-offline-package [01;34mgit:([31mmaster[34m)[00m[01;34m [00m[K[?1h=
