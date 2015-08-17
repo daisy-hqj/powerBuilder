@@ -1,5 +1,6 @@
 var exp = require('express');
 var bodyParser = require('body-parser');
+var createConnection = require('./dao/createConnection').connect;
 
 var app = exp();
 
@@ -19,7 +20,7 @@ app.get('/', function(req, res){
 //表单路径
 app.post('/submit', function(req, res){
     res.render('global');
-    console.log(req.body);
+    createConnection(req.body)
 });
 //静态资源
 app.use(exp.static(__dirname + '/static'));
