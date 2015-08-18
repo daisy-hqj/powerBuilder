@@ -65,3 +65,4 @@ function downloadSingleFile(url, path) {
     return promise;
 }
 
+exports.downloadSingleFile = downloadSingleFile;
