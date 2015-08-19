@@ -30,7 +30,7 @@ app.post('/submit', function(req, res){
     }
 	if(timeChecked) {
     	//下载文件 校验大小
-		download(data);
+		download(req.body);
     }
     
 });
@@ -75,8 +75,8 @@ function checkFile(data) {
 		console.log('endTime null');
 		return false;
 	}
-	var startTime =Data.parse(data.start.replace(/-/g,"/"));
-	var endTime = Data.parse(data.end.replace(/-/g,"/"));
+	var startTime =Date.parse(data.start.replace(/-/g,"/"));
+	var endTime = Date.parse(data.end.replace(/-/g,"/"));
 	if(endTime - startTime > 604800000) {//7天周期
 		console.log('time overflow');
 		return false;
