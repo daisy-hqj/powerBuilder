@@ -16,6 +16,7 @@ create table `resource`(
     `ctime` DATE not null comment '创建时间',
     `start` DATE not null comment '上线时间',
     `end` DATE not null comment '下线时间',
+    `occasion` char(16) not null comment '资源包类型',
     primary key (`id`)
 ) engine=innodb default charset=utf8 comment='资源列表';
 
