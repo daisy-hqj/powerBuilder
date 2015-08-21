@@ -46,7 +46,7 @@ function download(data) {
 	    function (file) {
 	    	console.log('downloaded');
 
-	    	var size = file.length;
+	    	var size = file[0].length;
 			console.log(size);//资源大小
 			//限制大小
 			if(size > 10000) {
@@ -54,6 +54,7 @@ function download(data) {
 				return;
 			}
 			var list = createConnection(data, size);//存储数据
+			console.log(list)
 			if(list){
 				console.log("list:");
 				console.log(list);

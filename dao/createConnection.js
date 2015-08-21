@@ -8,7 +8,7 @@ exports.connect = function (table, size) {
 
 	connection.connect();
 	 
-	connection.query("INSERT INTO resource (url,size,uid,name,ctime,start,end) VALUES ('"+table.url+"', "+ size +", 'dsfasdasasd', '"
+	connection.query("INSERT INTO resource (url,size,uid,name,ctime,start,end,occasion) VALUES ('"+table.url+"', "+ size +", 'dsfasdasasd', '"
 		+table.name+"', '"+table.start+"', '"+table.start+"', '"+table.end+"', '"+table.occasion+"') ", function(err, rows, fields) {
 		if (err) {
 		    console.error('error connecting: ' + err);
