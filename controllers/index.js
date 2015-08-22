@@ -1,74 +1,82 @@
 var downloadFile = require('../lib/download').downloadSingleFile;
-var createConnection = require('../dao/createConnection');
+var db = require('../dao/db');
 var conf = require('../conf/main');
+var fs = require('fs');
 
 exports.show = function (req, res) {
     res.render('global');
 };
 
 exports.submit = function (req, res) {
-    var timeChecked = true;
+    var params = req.body;
 
-    if(req.body.occasion == "activities") {
-    	//校验时间
-    	timeChecked = checkFile(req.body);
+    var startTime = '';
+    var endTime = '';
+
+    if(params.occasion == "activities") {
+
+        if (!params.start) {
+            res.end('开始时间不能为空');
+
+            return ;
+        }
+
+        if (!params.end) {
+            res.end('结束时间不能为空');
+            
+            return ;
+        }
+
+        startTime = Date.parse(params.start.replace(/-/g, "/"));
+        endTime = Date.parse(params.end.replace(/-/g, "/"));
+
+        if (startTime > endTime) {
+            res.end('开始时间不能晚于结束时间');
+
+            return ;
+        }
+
+        if (endTime - startTime > 7 * 24 * 60 * 60 * 1000) {
+            res.end('结束时间和开始时间不能相差7天以上');
+
+            return ;
+        }
     }
-	if(timeChecked) {
-    	//下载文件 校验大小
-		download(req.body, res);
+
+    if (!params.url) {
+        res.end('资源 url 不能为空');
+        
+        return ;
     }
+
+    downloadFile(params.url, conf.buildConf.dir).then(
+        function (arr) {
+            if (!arr.length) {
+                res.end('资源下载错误');
+                
+                return ;
+            }
+
+            var filePath = arr[0].history[1];
+            var size = fs.statSync(filePath).size;
+
+            if (size > conf.buildConf.fileMaxSize) {
+                res.end('资源大小不能大于 ' + conf.buildConf.fileMaxSize);
+
+                return ;
+            }
+
+            db.push(params, size, startTime, endTime, function (list) {
+                if (list) {
+                    res.redirect('/list');
+                }
+                else {
+                    res.end('数据异常');
+                }
+            });
+        },
+        function () {
+            res.end('资源无法下载');
+        }
+    );
 };
-
-//下载
-function download(data, res) {
-	var buildDir = conf.buildConf.dir;
-
-	downloadFile(data.url, buildDir).then(
-	    function (file) {
-	    	var size = file[0].length;
-			console.log(size);//资源大小
-			//限制大小
-			if(size > 10000) {
-				console.log('size overflow');
-				return;
-			}
-			var startTime =Date.parse(data.start.replace(/-/g,"/"));
-			var endTime = Date.parse(data.end.replace(/-/g,"/"));
-			//存储数据
-			createConnection.push(data, size, startTime, endTime, function(list){
-				if(list){
-					res.redirect('/list');
-				}
-				else{
-					console.log("sql err")
-				}
-			});
-	    },
-	    function () {
-	        console.log('download failed');
-	    }
-	);
-}
-
-function checkFile(data) {
-	//限制时间
-	if(!data.start) {
-		console.log('startTime null');
-		return false;
-	}
-	if(!data.end) {
-		console.log('endTime null');
-		return false;
-	}
-	var startTime =Date.parse(data.start.replace(/-/g,"/"));
-	var endTime = Date.parse(data.end.replace(/-/g,"/"));
-	if(endTime - startTime > 604800000) {//7天周期
-		console.log('time overflow');
-		return false;
-	}
-	if(endTime - startTime < 0) {//上线时间小于0
-		console.log('time wrong');
-		return false;
-	}
-	return true;
-}

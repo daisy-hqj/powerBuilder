@@ -1,8 +1,8 @@
-var createConnection = require('../dao/createConnection2');
+var db = require('../dao/db');
 
 exports.show = function (req, res) {
 	//拉取数据
-    createConnection.pullWithin(function(withinList){
+    db.pullWithin(function(withinList){
     	res.render('list', {list: withinList});
     });
 };

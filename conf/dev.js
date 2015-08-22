@@ -9,6 +9,7 @@ module.exports = {
 
 	},
     buildConf: {
-        dir: path.join(__dirname, '../_build')
+        dir: path.join(__dirname, '../_build'),
+        fileMaxSize: 100 * 1000
     }
 }
