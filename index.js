@@ -1,12 +1,12 @@
 var exp = require('express');
 var bodyParser = require('body-parser');
-var createConnection = require('./dao/createConnection').connect;
+var createConnection = require('./dao/createConnection');
 var path = require('path');
 var downloadFile = require('./src/download').downloadSingleFile;
 
 var app = exp();
 
-
+//支持form表单在action里面取post的数据
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
@@ -19,11 +19,19 @@ app.set('view engine', 'ejs');
 app.get('/', function(req, res){
     res.render('global');
 });
+//渲染文件
+app.get('/list', function(req, res){
+    var withinList = createConnection.pullWithin();//拉取数据
+
+    res.render('list', {list: withinList});
+
+});
+
 //表单路径
 app.post('/submit', function(req, res){
-    res.render('list');
     var timeChecked = true;
 
+    //运营资源包
     if(req.body.occasion == "activities") {
     	//校验时间
     	timeChecked = checkFile(req.body);
@@ -32,9 +40,9 @@ app.post('/submit', function(req, res){
     	//下载文件 校验大小
 		download(req.body);
     }
-    
+  
 });
-//静态资源
+//服务器给静态资源加路由
 app.use(exp.static(__dirname + '/static'));
 
 //下载
@@ -53,11 +61,13 @@ function download(data) {
 				console.log('size overflow');
 				return;
 			}
-			var list = createConnection(data, size);//存储数据
-			console.log(list)
+			var startTime =Date.parse(data.start.replace(/-/g,"/"));
+			var endTime = Date.parse(data.end.replace(/-/g,"/"));
+			var list = createConnection.push(data, size, startTime, endTime);//存储数据
 			if(list){
 				console.log("list:");
 				console.log(list);
+				res.redirect('/list');
 			}
 	    },
 	    function () {
