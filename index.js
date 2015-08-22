@@ -6,6 +6,7 @@ var list = require('./controllers/list');
 
 var app = exp();
 
+//支持form表单在action里面取post的数据
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
@@ -16,7 +17,7 @@ app.set('views',  __dirname + '/views');
 // 模板引擎
 app.set('view engine', 'ejs');
 
-//静态资源
+//服务器给静态资源加路由
 app.use(exp.static(__dirname + '/static'));
 
 app.get('/', index.show);

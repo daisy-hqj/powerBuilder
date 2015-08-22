@@ -1,12 +1,11 @@
 var downloadFile = require('../lib/download').downloadSingleFile;
-var createConnection = require('../dao/createConnection').connect;
+var createConnection = require('../dao/createConnection');
 
 exports.show = function (req, res) {
     res.render('global');
 };
 
 exports.submit = function () {
-    res.render('list');
     var timeChecked = true;
 
     if(req.body.occasion == "activities") {
@@ -35,11 +34,13 @@ function download(data) {
 				console.log('size overflow');
 				return;
 			}
-			var list = createConnection(data, size);//存储数据
-			console.log(list)
+			var startTime =Date.parse(data.start.replace(/-/g,"/"));
+			var endTime = Date.parse(data.end.replace(/-/g,"/"));
+			var list = createConnection.push(data, size, startTime, endTime);//存储数据
 			if(list){
 				console.log("list:");
 				console.log(list);
+				res.redirect('/list');
 			}
 	    },
 	    function () {

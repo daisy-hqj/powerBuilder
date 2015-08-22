@@ -38,13 +38,12 @@
 
 		<!-- 列表 -->
 		<div class="list-group bs-example">
-			<a href="#" class="list-group-item disabled">
-			Cras justo odio
+			<% for(var i=0; i<list.length; i++) {%>
+			   <a href="##" class="list-group-item">
+			   	<h4 class="list-group-item-heading"><%= list[i].name %></h4>
+			   <p class="list-group-item-text">size:<%= list[i].size %>, url:<%= list[i].url %></p>
 			</a>
-			<a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-			<a href="#" class="list-group-item">Morbi leo risus</a>
-			<a href="#" class="list-group-item">Porta ac consectetur ac</a>
-			<a href="#" class="list-group-item">Vestibulum at eros</a>
+			<% } %>
 		</div>
 				 
 		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
