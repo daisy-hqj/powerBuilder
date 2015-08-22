@@ -35,13 +35,17 @@
 		  </div><!-- /.container-fluid -->
 		</nav>
 		
-
+		<div class="btn-group bs-example" role="group" aria-label="...">
+			<button type="button" class="btn btn-default">当前有效资源</button>
+			<button type="button" class="btn btn-default">当前选中资源</button>
+			<button type="button" class="btn btn-default">我申请的资源</button>
+		</div>
 		<!-- 列表 -->
 		<div class="list-group bs-example">
 			<% for(var i=0; i<list.length; i++) {%>
 			   <a href="##" class="list-group-item">
 			   	<h4 class="list-group-item-heading"><%= list[i].name %></h4>
-			   <p class="list-group-item-text">size:<%= list[i].size %>, url:<%= list[i].url %></p>
+			   <p class="list-group-item-text">size:<%= list[i].size %>, user:<%= list[i].uid %><br>url:<%= list[i].url %></p>
 			</a>
 			<% } %>
 		</div>

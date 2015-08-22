@@ -36,7 +36,7 @@ exports.pullWithin = function () {
 	var today = new Date().getTime();
 	 
 	connection.query(
-        "SELECT * from resource where start<" + today + " and end>" + today,
+        "SELECT url,size,uid,name from resource where start<" + today + " and end>" + today + " ORDER BY size",
         function(err, rows, fields) {
 		    if (err) {
 		        console.error('error connecting: ' + err);
