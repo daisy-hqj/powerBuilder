@@ -39,11 +39,12 @@
 
 		<!-- 表单 -->
 		<form class="bs-example bs-example-form" data-example-id="simple-input-groups"action="/index/submit" method="post">
-			<div class="input-group input-line">
-            	<input type="radio" checked="checked" aria-label="Radio button for following text input" name="occasion" value="global">
-            	全局资源包&nbsp;&nbsp;&nbsp;&nbsp;
-            	<input type="radio" aria-label="Radio button for following text input" name="occasion" value="activities">
-            	运营资源包
+			<div id="resourceRadio" class="input-group input-line">
+            	<input id="globalResource" type="radio" checked="checked" aria-label="Radio button for following text input" name="occasion" value="global">
+                <label for="globalResource">全局资源包</label>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+            	<input id="activitiesResource" type="radio" aria-label="Radio button for following text input" name="occasion" value="activities">
+                <label for="activitiesResource">运营资源包</label>
 			</div>
 			<div class="input-group input-line">
 			  <span class="input-group-addon" id="basic-addon1">name</span>
@@ -61,7 +62,7 @@
 			</div>
 			<br>
 			<!-- 日期 -->
-            <div class="form-group">
+            <div id="startTime" class="form-group" style="display: none;">
                 <label for="dtp_input1" class="col-md-1 control-label">start</label>
                 <div class="input-group date col-md-5" id="form_starttime" data-date="2015-08-18" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1" data-min-view="2">
                     <input class="form-control" name="start" size="16" type="text" value="" readonly>
@@ -70,7 +71,7 @@
                 </div>
 				<input type="hidden" id="dtp_input1" value="" /><br/>
             </div>
-            <div class="form-group">
+            <div id="endTime" class="form-group" style="display: none;">
                 <label for="dtp_input1" class="col-md-1 control-label">end</label>
                 <div class="input-group date col-md-5" id="form_endtime" data-date="2015-08-18" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1" data-min-view="2">
                     <input class="form-control" name="end" size="16" type="text" value="" readonly>
@@ -89,7 +90,8 @@
 		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 		<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<!-- 日期选择 -->
-		<script type="text/javascript" src="../bootstrap/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+        <script type="text/javascript" src="/index/main.js"></script>
 		<script type="text/javascript">
 		    $('#form_starttime').datetimepicker({
 		        weekStart: 1,

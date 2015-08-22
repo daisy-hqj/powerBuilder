@@ -1,15 +1,24 @@
 var mysql      = require('mysql');
 var evconf = require('../conf/main').dbConf;//开发环境配置
-var connection = mysql.createConnection(evconf);
 
-exports.push = function (table, size, start, end, callback) {
+exports.push = function (data, size, start, end, callback) {
 
+    var connection = mysql.createConnection(evconf);
 	var size = size || 0;
 
 	connection.connect();
-	 
-	connection.query("INSERT INTO resource (url,size,uid,name,ctime,start,end,occasion) VALUES ('"+table.url+"', "+ size +", 'dsfasdasasd', '"
-		+table.name+"', '"+table.start+"', "+start+", "+end+", '"+table.occasion+"') ", function(err, rows, fields) {
+
+    var inserts = {
+        url: data.url,
+        size: size,
+        uid: 'asfasdfaf',
+        name: data.name,
+        start: data.start + '',
+        end: data.end + '',
+        occasion: data.occasion
+    };
+
+	connection.query("INSERT INTO resource SET ?", inserts, function(err, rows, fields) {
 		if (err) {
 		    console.error('error connecting: ' + err);
 		    return false;
@@ -28,11 +37,21 @@ exports.push = function (table, size, start, end, callback) {
 	//connection.end();
 }
 
+exports.pullWithin = function (callback) {
 
+    var connection = mysql.createConnection(evconf);
+	connection.connect();
 
-
-
-
-
-
-
+	var today = new Date().getTime();
+	connection.query(
+        "SELECT url,size,uid,name from resource where start<" + today + " and end>" + today + " ORDER BY size",
+        function(err, rows, fields) {
+		    if (err) {
+		        console.error('error connecting: ' + err);
+		        return false;
+		    }
+		    connection.end();
+		    callback(rows);
+		}
+    );
+}
