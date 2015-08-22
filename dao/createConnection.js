@@ -1,5 +1,5 @@
 var mysql      = require('mysql');
-var evconf = require('../conf/dev').dbConf;//开发环境配置
+var evconf = require('../conf/main').dbConf;//开发环境配置
 var connection = mysql.createConnection(evconf);
 
 exports.push = function (table, size, start, end, callback) {

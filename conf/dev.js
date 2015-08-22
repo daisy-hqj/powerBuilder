@@ -1,3 +1,5 @@
+var path = require('path');
+
 module.exports = {
 	dbConf: {
 		  host     : 'localhost',
@@ -5,5 +7,8 @@ module.exports = {
 		  //password : 'secret',
 		  database : 'h5_offline_build'
 
-	}
+	},
+    buildConf: {
+        dir: path.join(__dirname, '../_build')
+    }
 }

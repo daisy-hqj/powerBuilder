@@ -1,6 +1,6 @@
 var downloadFile = require('../lib/download').downloadSingleFile;
 var createConnection = require('../dao/createConnection');
-var path = require('path');
+var conf = require('../conf/main');
 
 exports.show = function (req, res) {
     res.render('global');
@@ -21,7 +21,7 @@ exports.submit = function (req, res) {
 
 //下载
 function download(data, res) {
-	var buildDir = path.join(__dirname, '_build');
+	var buildDir = conf.buildConf.dir;
 
 	downloadFile(data.url, buildDir).then(
 	    function (file) {
