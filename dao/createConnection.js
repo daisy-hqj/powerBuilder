@@ -28,28 +28,6 @@ exports.push = function (table, size, start, end, callback) {
 	//connection.end();
 }
 
-exports.pullWithin = function () {
-
-	connection.connect();
-
-	var today = new Date().getTime();
-	console.log(today);
-	console.log("SELECT url,size,uid,name from resource where start<" + today + " and end>" + today + " ORDER BY size");
-	 
-	connection.query(
-        "SELECT * from resource",
-        function(err, rows, fields) {
-		    if (err) {
-		        console.error('error connecting: ' + err);
-		        return false;
-		    }
-		    connection.end();
-		    return rows;
-		}
-    );
-}
-
-
 
 
 
