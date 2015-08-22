@@ -66,8 +66,8 @@ exports.submit = function (req, res) {
                 return ;
             }
 
-            db.push(params, size, startTime, endTime, function (list) {
-                if (list) {
+            db.push(params, size, startTime, endTime, function (result) {
+                if (result) {
                     res.redirect('/list');
                 }
                 else {
