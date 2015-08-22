@@ -2,7 +2,7 @@ var mysql      = require('mysql');
 var evconf = require('../conf/dev').dbConf;//开发环境配置
 var connection = mysql.createConnection(evconf);
 
-exports.push = function (table, size, start, end) {
+exports.push = function (table, size, start, end, callback) {
 
 	var size = size || 0;
 
@@ -20,9 +20,8 @@ exports.push = function (table, size, start, end) {
 		    console.error('error connecting: ' + err);
 		    return false;
 		  }
-		  console.log(rows[0]);
 		  connection.end();
-		  return rows;
+		  callback(rows);
 		});
 
 	});
@@ -34,9 +33,11 @@ exports.pullWithin = function () {
 	connection.connect();
 
 	var today = new Date().getTime();
+	console.log(today);
+	console.log("SELECT url,size,uid,name from resource where start<" + today + " and end>" + today + " ORDER BY size");
 	 
 	connection.query(
-        "SELECT url,size,uid,name from resource where start<" + today + " and end>" + today + " ORDER BY size",
+        "SELECT * from resource",
         function(err, rows, fields) {
 		    if (err) {
 		        console.error('error connecting: ' + err);
@@ -47,3 +48,13 @@ exports.pullWithin = function () {
 		}
     );
 }
+
+
+
+
+
+
+
+
+
+

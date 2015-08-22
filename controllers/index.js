@@ -1,11 +1,12 @@
 var downloadFile = require('../lib/download').downloadSingleFile;
 var createConnection = require('../dao/createConnection');
+var path = require('path');
 
 exports.show = function (req, res) {
     res.render('global');
 };
 
-exports.submit = function () {
+exports.submit = function (req, res) {
     var timeChecked = true;
 
     if(req.body.occasion == "activities") {
@@ -14,19 +15,16 @@ exports.submit = function () {
     }
 	if(timeChecked) {
     	//下载文件 校验大小
-		download(req.body);
+		download(req.body, res);
     }
 };
 
 //下载
-function download(data) {
+function download(data, res) {
 	var buildDir = path.join(__dirname, '_build');
-	console.log(buildDir);
 
 	downloadFile(data.url, buildDir).then(
 	    function (file) {
-	    	console.log('downloaded');
-
 	    	var size = file[0].length;
 			console.log(size);//资源大小
 			//限制大小
@@ -36,12 +34,15 @@ function download(data) {
 			}
 			var startTime =Date.parse(data.start.replace(/-/g,"/"));
 			var endTime = Date.parse(data.end.replace(/-/g,"/"));
-			var list = createConnection.push(data, size, startTime, endTime);//存储数据
-			if(list){
-				console.log("list:");
-				console.log(list);
-				res.redirect('/list');
-			}
+			//存储数据
+			createConnection.push(data, size, startTime, endTime, function(list){
+				if(list){
+					res.redirect('/list');
+				}
+				else{
+					console.log("sql err")
+				}
+			});
 	    },
 	    function () {
 	        console.log('download failed');
