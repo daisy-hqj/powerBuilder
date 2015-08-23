@@ -39,24 +39,17 @@ exports.queryList = function (params, callback) {
 
     var pageSize = 10000;
 
-    var whereStr = 'WHERE occasion = ?';
-    var sqlParams = [params.occasion];
+    var whereStr = 'WHERE occasion = "' + params.occasion + '"';
 
     if (params.occasion === 'activities') {
-        whereStr += ' AND start <= ? AND end >= ?';
-        
         var today = moment().format('YYYY-MM-DD');
-        sqlParams.push(today, today);
+        whereStr += ' AND start <= ' + today + ' AND end >= ' + today;
     }
 
-    whereStr += ' ORDER BY ? ? LIMIT ?,?';
-    sqlParams.push(params.sortby, params.orderby, (params.page - 1) * pageSize, pageSize);
+    whereStr += ' ORDER BY ' + params.sortby + ' ' + params.orderby + ';';
 
 	connection.query(
-        {
-            sql: 'SELECT id, url, size, name, appid, ctime, start, end, occasion from resource ' + whereStr,
-            values: sqlParams
-        },
+        'SELECT id, url, size, name, appid, ctime, start, end, occasion from resource ' + whereStr,
         function(err, result, fields) {
 		    if (err) {
 		        console.error('error connecting: ' + err);
@@ -64,11 +57,14 @@ exports.queryList = function (params, callback) {
 		        return false;
 		    }
 
+            result = result || [];
+
+            result.forEach(function (item, idx) {
+                item.ctime = moment(item.ctime).format('YYYY-MM-DD HH:mm:ss');
+            });
+
             connection.query(
-                {
-                    sql: 'SELECT count(*) as count from resource ' + whereStr,
-                    values: sqlParams
-                },
+                'SELECT count(*) as count from resource ' + whereStr,
                 function (err, data, fields) {
                     if (err) {
                         console.error('error connecting: ' + err);
