@@ -21,6 +21,8 @@ app.set('view engine', 'ejs');
 //服务器给静态资源加路由
 app.use(exp.static(__dirname + '/static'));
 
+app.use('/_package', exp.static(__dirname + '/_package'));
+
 app.get('/', index.show);
 app.post('/index/submit', index.submit)
 app.get('/list', list.show);
