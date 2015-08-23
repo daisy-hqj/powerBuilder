@@ -13,6 +13,7 @@ exports.push = function (data, size, start, end, callback) {
         url: data.url,
         size: parseInt(size, 10),
         name: data.name,
+        appid: data.appid || '',
         ctime: moment().format('YYYY-MM-DD HH:mm:ss'),
         start: data.start + '',
         end: data.end + '',
@@ -36,10 +37,9 @@ exports.queryList = function (params, callback) {
     var connection = mysql.createConnection(evconf);
 	connection.connect();
 
-    var pageSize = 30;
+    var pageSize = 10000;
 
     var whereStr = 'WHERE occasion = ?';
-    var sqlStr = 'SELECT id, url, size, name, ctime, start, end, occasion from resource';
     var sqlParams = [params.occasion];
 
     if (params.occasion === 'activities') {
@@ -54,7 +54,7 @@ exports.queryList = function (params, callback) {
 
 	connection.query(
         {
-            sql: 'SELECT id, url, size, name, ctime, start, end, occasion from resource ' + whereStr,
+            sql: 'SELECT id, url, size, name, appid, ctime, start, end, occasion from resource ' + whereStr,
             values: sqlParams
         },
         function(err, result, fields) {
@@ -86,3 +86,10 @@ exports.queryList = function (params, callback) {
 		}
     );
 }
+
+// 查询资源 url
+exports.queryUrls = function (ids, callback) {
+
+    var connection = mysql.createConnection(evconf);
+	connection.connect();
+};

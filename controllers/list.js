@@ -13,7 +13,7 @@ exports.show = function (req, res) {
     	res.render('list', {
             occasion: query.occasion,
             page: query.page,
-            total: Math.ceil(data.count / 30),
+            total: Math.ceil(data.count / 10000),
             sortby: query.sortby,
             orderby: query.orderby,
             list: data.list

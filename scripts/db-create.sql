@@ -12,6 +12,7 @@ create table `resource`(
     `url` varchar(4096) not null default '' comment '资源路径',
     `size` int(10) not null default 0 comment '资源大小',
     `name` varchar(128) not null default '' comment '资源名称',
+    `appid` varchar(30) default '' comment 'appid',
     `ctime` DATETIME not null comment '创建时间',
     `start` varchar(16) comment '上线时间',
     `end` varchar(16) comment '下线时间',

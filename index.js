@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./controllers/index');
 var list = require('./controllers/list');
+var build = require('./controllers/build');
 
 var app = exp();
 
@@ -23,6 +24,7 @@ app.use(exp.static(__dirname + '/static'));
 app.get('/', index.show);
 app.post('/index/submit', index.submit)
 app.get('/list', list.show);
+app.get('/build', build.build);
 
 if (!module.parent) {
   app.listen(3000);
