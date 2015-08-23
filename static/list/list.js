@@ -16,8 +16,10 @@
 						idArr.push($(this).attr('data-id'))
 					}
 				})
-				window.open('/build?ids=' + idArr.join(','))
-
+				var a=confirm("被打包资源的序号如下："+idArr.join(','));
+				if (a==true){
+					window.open('/build?ids=' + idArr.join(','));
+				}
 			})
 		}
 	}

@@ -1,6 +1,7 @@
 var db = require('../dao/db');
 var conf = require('../conf/main');
 var download = require('../lib/download').download;
+var exec = require('child_process').exec;
 
 var path = require('path');
 var fs = require('fs');
@@ -27,7 +28,16 @@ exports.build = function (req, res) {
         download(urls, buildPath).then(
             function () {
                 // do some build
-                res.end('build done');
+                exec('cd ' + buildPath, function () {
+		            exec('hpm build', function (err) {
+		                if (err) {
+		                    console.log(err);
+		                    return;
+		                }
+		                console.log('build done')
+		                res.end('build done');
+		            });
+		        });
             },
             function () {
                 res.end('build error');
