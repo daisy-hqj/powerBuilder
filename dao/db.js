@@ -92,4 +92,19 @@ exports.queryUrls = function (ids, callback) {
 
     var connection = mysql.createConnection(evconf);
 	connection.connect();
+
+    connection.query(
+        'select url from resource where id in (' + ids.join(',') + ')',
+        function (err, rows, fields) {
+            if (err) {
+                console.error('error connecting: ' + err);
+                connection.end();
+                
+                return false;
+            }
+
+            connection.end();
+            callback(rows);
+        }
+    );
 };
