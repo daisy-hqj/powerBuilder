@@ -28,17 +28,34 @@ exports.push = function (data, size, start, end, callback) {
           connection.end();
 		  callback(rows);
 	});
-	//connection.end();
 }
 
-exports.pullWithin = function (callback) {
+// 查询资源列表
+exports.queryList = function (params, callback) {
 
     var connection = mysql.createConnection(evconf);
 	connection.connect();
 
-	var today = new Date().getTime();
+    var pageSize = 30;
+
+    var sqlStr = 'SELECT count(id) as count, id, url, size, name, ctime, start, end, occasion from resource WHERE occasion = ?';
+    var sqlParams = [params.occasion];
+
+    if (params.occasion === 'activities') {
+        sqlStr += ' AND start <= ? AND end >= ?';
+        
+        var today = moment().format('YYYY-MM-DD');
+        sqlParams.push(today, today);
+    }
+
+    sqlStr += ' ORDER BY ? ? LIMIT ?,?';
+    sqlParams.push(params.sortby, params.orderby, (params.page - 1) * pageSize, pageSize);
+
 	connection.query(
-        "SELECT url, size, name from resource where start<" + today + " and end>" + today + " ORDER BY size",
+        {
+            sql: sqlStr,
+            values: sqlParams
+        },
         function(err, rows, fields) {
 		    if (err) {
 		        console.error('error connecting: ' + err);
