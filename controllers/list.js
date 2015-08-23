@@ -10,24 +10,13 @@ exports.show = function (req, res) {
 
 	//拉取数据
     db.queryList(query || {}, function(data){
-        data = data || [];
-
-        var count;
-
-        if (!data.length) {
-            count = 0;
-        }
-        else {
-            count = data[0].count;
-        }
-
     	res.render('list', {
             occasion: query.occasion,
             page: query.page,
-            total: Math.ceil(count / 30),
+            total: Math.ceil(data.count / 30),
             sortby: query.sortby,
             orderby: query.orderby,
-            list: data
+            list: data.list
         });
     });
 };
