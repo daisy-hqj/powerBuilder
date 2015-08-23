@@ -29,5 +29,6 @@ exports.show = function (req, res) {
             orderby: query.orderby,
             list: data
         });
+        console.log(data)
     });
 };
