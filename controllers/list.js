@@ -18,6 +18,5 @@ exports.show = function (req, res) {
             orderby: query.orderby,
             list: data.list
         });
-        console.log(data)
     });
 };

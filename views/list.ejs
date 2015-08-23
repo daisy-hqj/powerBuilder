@@ -46,78 +46,51 @@
 					<li class="active" id="listGlobalResource"><a href="/list?occasion=global&page=<%= page %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>">全局资源包</a></li>
 				<% } %>
 			</ul>
-		<% if (list.length>0) {%>
-			<!-- 表格 -->
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>name</th>
-						<th>size</th>
-						<th>url</th>
-						<th>availability</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% for(var i=0; i<list.length; i++) {%>
-					<tr>
-					   <td><%= list[i].id %></td>
-					   <td><%= list[i].name %></td>
-					   <td><%= list[i].size %></td>
-					   <td><%= list[i].url %></td>
-					   <td><input type="checkbox" name=<%= list[i].id %>></td>
-					<% } %>
-					</tr>
-				</tbody>
+			<% if (list.length>0) {%>
+				<!-- 表格 -->
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>name</th>
+							<th>appid</th>
 
-			</table>
-			<nav>
-				<ul class="pagination">
-					<% if (total<=10) { %>
-						<% for(var i=1; i<page; i++) {%>
-							<li><a href="/list?occasion=<%= occasion %>&page=<%= i %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= i %></a></li>
-						<% } %>
-						<li class="active"><a href="##"><%= page %></a></li>
-						<% for(var i=page+1; i<=total; i++) {%>
-							<li><a href="/list?occasion=<%= occasion %>&page=<%= i %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= i %></a></li>
-						<% } %>
-					<% } %>
-					<% if (total>10) { %>
-						<% if (page<=5) { %>
-							<% for(var i=1; i<page; i++) {%>
-								<li><a href="/list?occasion=<%= occasion %>&page=<%= i %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= i %></a></li>
+							<% if (sortby == 'size' && orderby == 'asc') {%>
+							<th class="dropup"><a href="/list?occasion=<%= occasion %>&page=<%= page %>&total=<%= total %>&sortby=size&orderby=desc">size <span class="caret"></span></a></th>
+							<% }else { %>
+							<th><a href="/list?occasion=<%= occasion %>&page=<%= page %>&total=<%= total %>&sortby=size&orderby=asc">size <span class="caret"></span></a></th>
 							<% } %>
-							<li class="active"><a href="##"><%= page %></a></li>
-							<li><a href="/list?occasion=<%= occasion %>&page=<%= page+1 %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= page+1 %></a></li>
-							<li><a class="ellipsis">...</a></li>
-							<li><a href="/list?occasion=<%= occasion %>&page=<%= total %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= total %></a></li>
-						<% } %>
-						<% if (total-page<=5) { %>
-							<li><a href="/list?occasion=<%= occasion %>&page=1&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>">1</a></li>
-							<li><a href="/list?occasion=<%= occasion %>&page=2&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>">2</a></li>
-							<li><a class="ellipsis">...</a></li>
-							<li><a href="/list?occasion=<%= occasion %>&page=<%= page-1 %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= page-1 %></a></li>
-							<li class="active"><a href="##"><%= page %></a></li>
-							<% for(var i=page+1; i<=total; i++) {%>
-								<li><a href="/list?occasion=<%= occasion %>&page=<%= i %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= i %></a></li>
+
+
+							<% if (sortby == 'ctime' && orderby == 'asc') {%>
+							<th class="dropup"><a href="/list?occasion=<%= occasion %>&page=<%= page %>&total=<%= total %>&sortby=ctime&orderby=desc">ctime <span class="caret"></span></a></th>
+							<% }else { %>
+							<th><a href="/list?occasion=<%= occasion %>&page=<%= page %>&total=<%= total %>&sortby=ctime&orderby=asc">ctime <span class="caret"></span></a></th>
 							<% } %>
+
+							<th>url</th>
+							<th>availability</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% for(var i=0; i<list.length; i++) {%>
+						<tr>
+						   <td><%= list[i].id %></td>
+						   <td><%= list[i].name %></td>
+						   <td><%= list[i].appid %></td>
+						   <td><%= list[i].size %></td>
+						   <td><%= list[i].ctime %></td>
+						   <td><%= list[i].url %></td>
+						   <td><input type="checkbox" class="availability" data-id=<%= list[i].id %> ></td>
 						<% } %>
-						<% if (total-page>5 && page>5) { %>
-							<li><a href="/list?occasion=<%= occasion %>&page=1&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>">1</a></li>
-							<li><a href="/list?occasion=<%= occasion %>&page=2&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>">2</a></li>
-							<li><a class="ellipsis">...</a></li>
-							<li><a href="/list?occasion=<%= occasion %>&page=<%= page-1 %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= page-1 %></a></li>
-							<li class="active"><a href="/list?occasion=<%= occasion %>&page=<%= page %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= page %></a></li>
-							<li><a href="/list?occasion=<%= occasion %>&page=<%= page+1 %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= page+1 %></a></li>
-							<li><a class="ellipsis">...</a></li>
-							<li><a href="/list?occasion=<%= occasion %>&page=<%= total %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= total %></a></li>
-						<% } %>
-					<% } %>
-				</ul>
-			</nav>
-		<% } else {%>
-		<div class="alert alert-info" role="alert">当前没有记录</div>
-		<% } %>
+						</tr>
+					</tbody>
+
+				</table>
+				<button id="submit" class="btn btn-default">打包</button>
+			<% } else {%>
+			<div class="alert alert-info" role="alert">当前没有记录</div>
+			<% } %>
 
 		</div>
 		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
