@@ -68,7 +68,7 @@ exports.submit = function (req, res) {
 
             db.push(params, size, startTime, endTime, function (result) {
                 if (result) {
-                    res.redirect('/list');
+                    res.redirect('/list?occasion=' + params.occasion);
                 }
                 else {
                     res.end('数据异常');
