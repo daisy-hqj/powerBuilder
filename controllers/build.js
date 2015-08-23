@@ -25,8 +25,21 @@ exports.build = function (req, res) {
 
         var buildPath = getPath();
 
+        var hpmfileContent = fs.readFileSync(path.join(__dirname, '../hpmfile.json')).toString();
+        hpmfileContent = JSON.parse(hpmfileContent);
+
+        if (query.version) {
+            hpmfileContent.version = query.version;
+        }
+
         download(urls, buildPath).then(
             function () {
+
+                fs.writeFile(
+                    path.join(buildPath, '/hpmfile.json'),
+                    JSON.stringify(hpmfileContent)
+                );
+
                 // do some build
                 exec('cd ' + buildPath + '&hpm build', function (err, data) {
                     if (err) {
@@ -35,7 +48,6 @@ exports.build = function (req, res) {
                     }
                     res.end('build done');
                     //res.redirect('/_package/xxx/xxx.amr')
-
 		        });
             },
             function () {
