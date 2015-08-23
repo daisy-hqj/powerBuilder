@@ -18,7 +18,7 @@
 				})
 				var a=confirm("被打包资源的序号如下："+idArr.join(','));
 				if (a==true){
-					window.open('/build?ids=' + idArr.join(','));
+					window.open('/build?ids=' + idArr.join(',') + '&version=' + $('#version').val());
 				}
 			})
 		}

@@ -23,7 +23,8 @@ exports.build = function (req, res) {
             }
         });
 
-        var buildPath = getPath();
+        var buildPathN =  getPath();
+        var buildPath = path.join(conf.buildConf.dir, buildPathN);
 
         var hpmfileContent = fs.readFileSync(path.join(__dirname, '../hpmfile.json')).toString();
         hpmfileContent = JSON.parse(hpmfileContent);
@@ -41,13 +42,12 @@ exports.build = function (req, res) {
                 );
 
                 // do some build
-                exec('cd ' + buildPath + '&hpm build', function (err, data) {
+                exec('cd ' + buildPath + ' && hpm build', function (err, data) {
                     if (err) {
                         console.log(err);
                         return;
                     }
-                    res.end('build done');
-                    //res.redirect('/_package/xxx/xxx.amr')
+                    res.redirect('/_build/'+buildPathN+'/_package/'+query.version+'/20000196-'+query.version.replace(/\./g, '_')+'.amr');
 		        });
             },
             function () {
@@ -65,5 +65,5 @@ function getPath() {
         buildPath = Math.ceil(Math.random() * 10000000000) + '';
     }
 
-    return path.join(conf.buildConf.dir, buildPath);
+    return buildPath;
 }

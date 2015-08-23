@@ -11,7 +11,7 @@
 		    .bs-example {width: 768px; margin: 0 auto;background-color: #fff;border-color: #ddd;border-width: 1px;border-radius: 4px 4px 0 0;-webkit-box-shadow: none;box-shadow: none; margin-top: 70px;}
 		    .bs-example-form .input-group {margin-bottom: 10px;}
 		    .input-line .input-group-addon {width: 80px;}
-		    .nav-tabs {margin-bottom: 20px;}
+		    .nav-tabs {margin-bottom: 10px;}
 		    nav {text-align: center;}
 		    .table{width: 768px;}
 		    .pagination>li>.ellipsis:focus,.pagination>li>.ellipsis:hover{
@@ -20,6 +20,8 @@
 		    }
 		    .size-th { white-space:nowrap;}
 		    .size-th:hover { text-decoration: none}
+		    .version-wrap {width: 400px;margin-bottom: 10px;}
+		    .btn-default {position: absolute;right: -100px;}
 		</style>
 	</head>
 	<body>
@@ -50,6 +52,12 @@
 				<% } %>
 			</ul>
 			<% if (list.length>0) {%>
+			<div class="input-group version-wrap">
+		      <span class="input-group-addon">请输入离线包版本号：</span>
+		      <input id="version" type="text" class="form-control" placeholder="1.0.0.8" aria-describedby="版本号">
+		      <button id="submit" class="btn btn-default">打包</button>
+		    </div>
+
 				<!-- 表格 -->
 				<table class="table table-bordered">
 					<thead>
@@ -88,7 +96,6 @@
 					</tbody>
 
 				</table>
-				<button id="submit" class="btn btn-default">打包</button>
 			<% } else {%>
 			<div class="alert alert-info" role="alert">当前没有记录</div>
 			<% } %>
