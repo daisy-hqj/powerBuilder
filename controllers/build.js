@@ -28,17 +28,14 @@ exports.build = function (req, res) {
         download(urls, buildPath).then(
             function () {
                 // do some build
-                console.log(buildPath)
-                exec('cd ' + buildPath, function () {
-		            exec('hpm build', function (err) {
-		                if (err) {
-		                    console.log(err);
-		                    return;
-		                }
-		                res.end('build done');
-		                //res.redirect('/_package/xxx/xxx.amr')
+                exec('cd ' + buildPath + '&hpm build', function (err, data) {
+                    if (err) {
+                        console.log(err);
+                        return;
+                    }
+                    res.end('build done');
+                    //res.redirect('/_package/xxx/xxx.amr')
 
-		            });
 		        });
             },
             function () {
