@@ -12,6 +12,11 @@
 		    .bs-example-form .input-group {margin-bottom: 10px;}
 		    .input-line .input-group-addon {width: 80px;}
 		    .nav-tabs {margin-bottom: 20px;}
+		    nav {text-align: center;}
+		    .pagination>li>.ellipsis:focus,.pagination>li>.ellipsis:hover{
+		    	color: #337ab7;
+			    background-color: #fff;
+		    }
 		</style>
 	</head>
 	<body>
@@ -33,8 +38,13 @@
 		</nav>
 		<div class="bs-example">
 			<ul class="nav nav-tabs">
-				<li class="active" id="listActivitiesResource"><a href="##">运营资源包</a></li>
-				<li id="listGlobalResource"><a href="##">全局资源包</a></li>
+				<% if (occasion == 'activities') { %>
+					<li class="active" id="listActivitiesResource"><a href="/list?occasion=activities&page=<%= page %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>" >运营资源包</a></li>
+					<li id="listGlobalResource"><a href="/list?occasion=global&page=<%= page %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>">全局资源包</a></li>
+				<% } else { %>
+					<li id="listActivitiesResource"><a href="/list?occasion=activities&page=<%= page %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>" >运营资源包</a></li>
+					<li class="active" id="listGlobalResource"><a href="/list?occasion=global&page=<%= page %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>">全局资源包</a></li>
+				<% } %>
 			</ul>
 		<% if (list.length>0) {%>
 			<!-- 表格 -->
@@ -61,6 +71,50 @@
 				</tbody>
 
 			</table>
+			<nav>
+				<ul class="pagination">
+					<% if (total<=10) { %>
+						<% for(var i=1; i<page; i++) {%>
+							<li><a href="/list?occasion=<%= occasion %>&page=<%= i %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= i %></a></li>
+						<% } %>
+						<li class="active"><a href="##"><%= page %></a></li>
+						<% for(var i=page+1; i<=total; i++) {%>
+							<li><a href="/list?occasion=<%= occasion %>&page=<%= i %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= i %></a></li>
+						<% } %>
+					<% } %>
+					<% if (total>10) { %>
+						<% if (page<=5) { %>
+							<% for(var i=1; i<page; i++) {%>
+								<li><a href="/list?occasion=<%= occasion %>&page=<%= i %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= i %></a></li>
+							<% } %>
+							<li class="active"><a href="##"><%= page %></a></li>
+							<li><a href="/list?occasion=<%= occasion %>&page=<%= page+1 %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= page+1 %></a></li>
+							<li><a class="ellipsis">...</a></li>
+							<li><a href="/list?occasion=<%= occasion %>&page=<%= total %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= total %></a></li>
+						<% } %>
+						<% if (total-page<=5) { %>
+							<li><a href="/list?occasion=<%= occasion %>&page=1&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>">1</a></li>
+							<li><a href="/list?occasion=<%= occasion %>&page=2&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>">2</a></li>
+							<li><a class="ellipsis">...</a></li>
+							<li><a href="/list?occasion=<%= occasion %>&page=<%= page-1 %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= page-1 %></a></li>
+							<li class="active"><a href="##"><%= page %></a></li>
+							<% for(var i=page+1; i<=total; i++) {%>
+								<li><a href="/list?occasion=<%= occasion %>&page=<%= i %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= i %></a></li>
+							<% } %>
+						<% } %>
+						<% if (total-page>5 && page>5) { %>
+							<li><a href="/list?occasion=<%= occasion %>&page=1&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>">1</a></li>
+							<li><a href="/list?occasion=<%= occasion %>&page=2&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>">2</a></li>
+							<li><a class="ellipsis">...</a></li>
+							<li><a href="/list?occasion=<%= occasion %>&page=<%= page-1 %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= page-1 %></a></li>
+							<li class="active"><a href="/list?occasion=<%= occasion %>&page=<%= page %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= page %></a></li>
+							<li><a href="/list?occasion=<%= occasion %>&page=<%= page+1 %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= page+1 %></a></li>
+							<li><a class="ellipsis">...</a></li>
+							<li><a href="/list?occasion=<%= occasion %>&page=<%= total %>&total=<%= total %>&sortby=<%= sortby %>&orderby=<%= orderby %>"><%= total %></a></li>
+						<% } %>
+					<% } %>
+				</ul>
+			</nav>
 		<% } else {%>
 		<div class="alert alert-info" role="alert">当前没有记录</div>
 		<% } %>
