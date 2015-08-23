@@ -13,10 +13,13 @@
 		    .input-line .input-group-addon {width: 80px;}
 		    .nav-tabs {margin-bottom: 20px;}
 		    nav {text-align: center;}
+		    .table{width: 768px;}
 		    .pagination>li>.ellipsis:focus,.pagination>li>.ellipsis:hover{
 		    	color: #337ab7;
 			    background-color: #fff;
 		    }
+		    .size-th { white-space:nowrap;}
+		    .size-th:hover { text-decoration: none}
 		</style>
 	</head>
 	<body>
@@ -56,19 +59,18 @@
 							<th>appid</th>
 
 							<% if (sortby == 'size' && orderby == 'asc') {%>
-							<th class="dropup"><a href="/list?occasion=<%= occasion %>&page=<%= page %>&total=<%= total %>&sortby=size&orderby=desc">size <span class="caret"></span></a></th>
+							<th class="dropup"><a class="size-th" href="/list?occasion=<%= occasion %>&page=<%= page %>&total=<%= total %>&sortby=size&orderby=desc">size <span class="caret"></span></a></th>
 							<% }else { %>
-							<th><a href="/list?occasion=<%= occasion %>&page=<%= page %>&total=<%= total %>&sortby=size&orderby=asc">size <span class="caret"></span></a></th>
+							<th><a class="size-th" href="/list?occasion=<%= occasion %>&page=<%= page %>&total=<%= total %>&sortby=size&orderby=asc">size <span class="caret"></span></a></th>
 							<% } %>
 
 
 							<% if (sortby == 'ctime' && orderby == 'asc') {%>
-							<th class="dropup"><a href="/list?occasion=<%= occasion %>&page=<%= page %>&total=<%= total %>&sortby=ctime&orderby=desc">ctime <span class="caret"></span></a></th>
+							<th class="dropup"><a class="size-th" href="/list?occasion=<%= occasion %>&page=<%= page %>&total=<%= total %>&sortby=ctime&orderby=desc">ctime <span class="caret"></span></a></th>
 							<% }else { %>
-							<th><a href="/list?occasion=<%= occasion %>&page=<%= page %>&total=<%= total %>&sortby=ctime&orderby=asc">ctime <span class="caret"></span></a></th>
+							<th><a class="size-th" href="/list?occasion=<%= occasion %>&page=<%= page %>&total=<%= total %>&sortby=ctime&orderby=asc">ctime <span class="caret"></span></a></th>
 							<% } %>
 
-							<th>url</th>
 							<th>availability</th>
 						</tr>
 					</thead>
@@ -79,8 +81,7 @@
 						   <td><%= list[i].name %></td>
 						   <td><%= list[i].appid %></td>
 						   <td><%= list[i].size %></td>
-						   <td><%= list[i].ctime %></td>
-						   <td><%= list[i].url %></td>
+						   <td class="size-th"><%= list[i].ctime %></td>
 						   <td><input type="checkbox" class="availability" data-id=<%= list[i].id %> ></td>
 						<% } %>
 						</tr>
